@@ -1,21 +1,36 @@
 import React from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import Button from '../atoms/button';
-import { useNavigate } from 'react-router-dom';
 
-const ManagerDashboard: React.FC = () => {
-  const { handleLogout } = useAuth();
-  const navigate = useNavigate();
+const ManagerDashboard = () => {
+  const { user, sessionsData, error } = useManagerDashboard();
 
-  const onLogout = () => {
-    handleLogout();
-    navigate('/login');
-  };
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
-    <div>
-      <h1>Welcome to the Manager Dashboard</h1>
-      <Button text="Logout" onClick={onLogout} variant="secondary" />
+    <div className="flex items-center justify-center h-screen">
+      <div className="text-center">
+        {user && (
+          <h1>Bienvenido manager {user.name}</h1>
+        )}
+        {sessionsData && sessionsData.length > 0 ? (
+          <div>
+            {sessionsData.map((session) => (
+              <div key={session.sessionId}>
+                <p>Sesión: {session.sessionNumber}</p>
+                <p>Descripción: {session.description}</p>
+                <p>Inició en: {new Date(session.createdAt).toLocaleString()}</p>
+                <p>Duración: {session.duration} minutos</p>
+              </div>
+            ))}
+            <Button text="Tomar asistencia" onClick={() => { /* TODO: Take attendance */ }} variant="primary" />
+          </div>
+        ) : (
+          <p>No hay sesiones disponibles en este momento.</p>
+        )}
+      </div>
     </div>
   );
 };

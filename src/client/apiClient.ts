@@ -8,7 +8,6 @@ apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('authToken');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-    console.log('Token added to request:', token);
   } else {
     console.log('No token found in localStorage');
   }
