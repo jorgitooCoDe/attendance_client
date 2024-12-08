@@ -1,23 +1,39 @@
-import React from 'react';
+// src/components/pages/ManagerDashboard.tsx
+import React, { useState } from 'react';
 import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import { useAuth } from '../../hooks/useAuth';
 import Button from '../atoms/button';
+import AttendanceModal from '../molecules/attendanceModal';
+import { useAssignationByGroupID } from '../../hooks/useAssignation';
 import { useNavigate } from 'react-router-dom';
 
 const ManagerDashboard = () => {
   const { user, sessionsData, error } = useManagerDashboard();
   const { handleLogout } = useAuth();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [attendances, setAttendances] = useState<{ [key: number]: boolean }>({});
   const navigate = useNavigate();
+
+  const currentSession = sessionsData && sessionsData.length > 0 ? sessionsData[0] : null;
+  const groupId = currentSession?.groupId || 0;
+  console.log('Current Session:', currentSession);
+  console.log('Group ID:', groupId);
+  const { assignations = [], loading, error: assignationError } = useAssignationByGroupID(groupId);
 
   if (error) {
     return <div className="text-red-500">Error: {error}</div>;
   }
 
-  const currentSession = sessionsData && sessionsData.length > 0 ? sessionsData[0] : null;
-
   const onLogout = () => {
     handleLogout();
     navigate('/login');
+  };
+
+  const toggleAttendance = (id: number) => {
+    setAttendances((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
 
   return (
@@ -29,8 +45,6 @@ const ManagerDashboard = () => {
         className="absolute top-4 right-4 px-3 py-1"
       />
       <div className="relative bg-white p-8 rounded-lg w-full max-w-lg border shadow-custom-red">
-
-
         {user && (
           <h1 className="text-2xl font-bold mb-6 text-center text-mto_gray">
             Bienvenido manager {user.name}
@@ -43,7 +57,7 @@ const ManagerDashboard = () => {
               Te encuentras en la sesión <strong>{currentSession.sessionNumber}</strong>
             </p>
 
-            <table className="w-full mb-6 border-collapse">
+            <table className="w-full mb-6">
               <tbody>
                 <tr>
                   <th className="text-left px-4 py-2 border-b w-1/3 text-mto_gray">Descripción:</th>
@@ -65,10 +79,20 @@ const ManagerDashboard = () => {
             <div className="text-center">
               <Button
                 text="Tomar asistencia"
-                onClick={() => { /* TODO: Implementar la lógica de asistencia */ }}
+                onClick={() => setIsModalOpen(true)}
                 variant="secondary"
               />
             </div>
+
+            <AttendanceModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              loading={loading}
+              error={assignationError}
+              assignations={assignations}
+              attendances={attendances}
+              toggleAttendance={toggleAttendance}
+            />
           </div>
         ) : (
           <p className="text-center text-gray-500">No hay sesiones disponibles en este momento.</p>
