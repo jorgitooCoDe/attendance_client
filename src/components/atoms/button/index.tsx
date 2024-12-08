@@ -9,7 +9,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ text, onClick, variant = 'primary' }) => {
   const baseClasses = "py-2 mt-4 rounded transition-colors hover:bg-mto_red rounded-2xl text-white";
   const primaryClasses = "w-full bg-mto_gray text-center mx-auto";
-  const secondaryClasses = "w-1/3 border bg-transparent hover:border-none";
+  const secondaryClasses = "w-2/3 border bg-mto_red hover:bg-mto_gray";
 
   const classes = `${baseClasses} ${variant === 'primary' ? primaryClasses : secondaryClasses}`;
 
