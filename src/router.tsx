@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './components/organisms/login';
-import Dashboard from './components/pages/dashboard';
+import AdminDashboard from './components/pages/adminDashboard';
+import ManagerDashboard from './components/pages/managerDashboard';
 import ProtectedRoute from './components/organisms/protectedRoute';
 
 const AppRouter: React.FC = () => {
@@ -10,7 +11,8 @@ const AppRouter: React.FC = () => {
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/manager-dashboard" element={<ManagerDashboard />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>

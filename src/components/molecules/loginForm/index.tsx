@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../atoms/input';
 import Button from '../../atoms/button';
@@ -7,22 +7,26 @@ import { useAuth } from '../../../hooks/useAuth';
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { handleLogin, error } = useAuth();
+  const { handleLogin, error, user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'ADMIN') {
+        navigate('/admin-dashboard');
+      } else if (user.role === 'MANAGER') {
+        navigate('/manager-dashboard');
+      }
+    }
+  }, [user, navigate]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await handleLogin(username, password);
-    if (!error) {
-      navigate('/dashboard');
-    }
   };
 
   const handleClick = async () => {
     await handleLogin(username, password);
-    if (!error) {
-      navigate('/dashboard');
-    }
   };
 
   return (

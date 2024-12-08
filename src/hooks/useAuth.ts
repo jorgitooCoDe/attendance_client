@@ -1,23 +1,10 @@
-import { useState, useEffect } from 'react';
-import { login, logout, validateSession } from '../services/authService';
+import { useState } from 'react';
+import { login, validateSession } from '../services/authService';
 import { UserResponseEntity } from '../types/apiResponseEntities';
 
 export const useAuth = () => {
   const [user, setUser] = useState<UserResponseEntity | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const validatedUser = await validateSession();
-        setUser(validatedUser);
-      } catch (err) {
-        setUser(null);
-      }
-    };
-
-    checkSession();
-  }, []);
 
   const handleLogin = async (username: string, password: string) => {
     try {
@@ -26,16 +13,13 @@ export const useAuth = () => {
       setUser(validatedUser);
       setError(null);
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+      setError('Login failed');
+      setUser(null);
     }
   };
 
   const handleLogout = () => {
-    logout();
+    localStorage.removeItem('authToken');
     setUser(null);
   };
 

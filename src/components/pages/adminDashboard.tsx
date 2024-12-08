@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import Button from '../atoms/button';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard: React.FC = () => {
+const AdminDashboard: React.FC = () => {
   const { handleLogout } = useAuth();
   const navigate = useNavigate();
 
@@ -14,10 +14,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <h1>Welcome to the Dashboard</h1>
+      <h1>Welcome to the Admin Dashboard</h1>
       <Button text="Logout" onClick={onLogout} variant="secondary" />
     </div>
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;
