@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { login, logout, validateSession } from '../services/authService';
-import { User } from '../types/types';
+import { UserResponseEntity } from '../types/apiResponseEntities';
 
 export const useAuth = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserResponseEntity | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (username: string, password: string) => {

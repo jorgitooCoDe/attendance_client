@@ -1,10 +1,6 @@
 import apiClient from '../client/apiClient';
-import { User } from '../types/types';
-
-interface LoginResponse {
-  token: string;
-  user: User;
-}
+import { UserResponseEntity } from '../types/apiResponseEntities';
+import { LoginResponse, ValidSessionResponse } from '../types/apiResponses';
 
 export const login = async (username: string, password: string): Promise<void> => {
   const response = await apiClient.post<LoginResponse>('/auth', {
@@ -20,7 +16,7 @@ export const logout = (): void => {
   localStorage.removeItem('authToken');
 };
 
-export const validateSession = async (): Promise<User> => {
-  const response = await apiClient.get<{ user: User }>('/auth/valid');
+export const validateSession = async (): Promise<UserResponseEntity> => {
+  const response = await apiClient.get<ValidSessionResponse>('/auth/valid');
   return response.data.user;
 };

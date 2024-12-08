@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../atoms/input';
 import Button from '../../atoms/button';
 import { useAuth } from '../../../hooks/useAuth';
@@ -7,10 +8,14 @@ const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { handleLogin, error } = useAuth();
+  const navigate = useNavigate();
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    handleLogin(username, password);
+    await handleLogin(username, password);
+    if (!error) {
+      navigate('/dashboard');
+    }
   };
 
   const handleClick = () => {
