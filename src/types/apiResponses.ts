@@ -69,10 +69,8 @@ export type SearchGroupByNameResponse = {
 };
 
 // GET /api/v0/auth/showAssignationByGroupID
-export type ShowAssignationByGroupIDResponse = {
-  message: string;
-  content: GroupStatisticsResponseEntity[];
-};
+export type ShowAssignationByGroupIDResponse = GroupStatisticsResponseEntity[];
+;
 
 // GET /api/v0/auth/searchSessionsByGroupID
 export type SearchSessionsByGroupIDResponse = {
