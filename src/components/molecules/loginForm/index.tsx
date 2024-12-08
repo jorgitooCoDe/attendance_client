@@ -18,11 +18,10 @@ const LoginForm: React.FC = () => {
     }
   };
 
-  const handleClick = () => {
-    const form = document.querySelector('form');
-    if (form) {
-      const event = new Event('submit', { bubbles: true, cancelable: true });
-      form.dispatchEvent(event);
+  const handleClick = async () => {
+    await handleLogin(username, password);
+    if (!error) {
+      navigate('/dashboard');
     }
   };
 

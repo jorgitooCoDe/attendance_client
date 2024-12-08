@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { login, logout, validateSession } from '../services/authService';
 import { UserResponseEntity } from '../types/apiResponseEntities';
 
 export const useAuth = () => {
   const [user, setUser] = useState<UserResponseEntity | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const validatedUser = await validateSession();
+        setUser(validatedUser);
+      } catch (err) {
+        setUser(null);
+      }
+    };
+
+    checkSession();
+  }, []);
 
   const handleLogin = async (username: string, password: string) => {
     try {
