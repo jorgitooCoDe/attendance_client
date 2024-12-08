@@ -71,7 +71,7 @@ export type SearchGroupByNameResponse = {
 // GET /api/v0/auth/showAssignationByGroupID
 export type ShowAssignationByGroupIDResponse = {
   message: string;
-  content: GroupStatisticsResponseEntity;
+  content: GroupStatisticsResponseEntity[];
 };
 
 // GET /api/v0/auth/searchSessionsByGroupID
@@ -79,3 +79,6 @@ export type SearchSessionsByGroupIDResponse = {
   message: string;
   content: SessionResponseEntity[];
 };
+
+// GET /api/v0/auth/getSessionsToday
+export type SessionsTodayResponse = SessionResponseEntity[];

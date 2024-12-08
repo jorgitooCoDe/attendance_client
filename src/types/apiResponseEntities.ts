@@ -8,6 +8,10 @@ export type UserResponseEntity = {
   phone_number: string;
 };
 
+export type UserApiResponse = {
+  user: UserResponseEntity;
+};
+
 export type GroupResponseEntity = {
   id: number;
   name: string;
@@ -55,9 +59,11 @@ export type StatisticsResponseEntity = {
 };
 
 export type GroupStatisticsResponseEntity = {
-  Id: number;
-  name: string;
-  description: string;
-  amount_persons: number;
-  amount_sessions: number;
+  AssignationID: number;
+  PersonCode: string;
+  PersonName: string;
+  PersonLastName: string;
+  PersonEmail: string;
+  PersonPhone: string;
+  PersonState: string;
 };
