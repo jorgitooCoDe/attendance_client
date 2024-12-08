@@ -21,7 +21,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
         </button>
 
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
-        {children}
+        <div className="max-h-[60vh] md:max-h-[70vh] lg:max-h-[80vh] overflow-y-auto">
+          {children}
+        </div>
       </div>
     </div>
   );

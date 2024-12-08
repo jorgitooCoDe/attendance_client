@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../modal';
 import ToggleSwitch from '../../atoms/toggleSwitch';
 import Button from '../../atoms/button';
-import { GroupStatisticsResponseEntity } from '../../../types/apiResponseEntities';
+import { GroupStatisticsResponseEntity } from '../../../types';
 
 type AttendanceModalProps = {
   isOpen: boolean;
@@ -23,8 +23,6 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
   attendances,
   toggleAttendance,
 }) => {
-  console.log('AttendanceModal Props:', { loading, error, assignations, attendances });
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Asistencia de participantes">
       {loading && <div className="text-center">Cargando participantes...</div>}
@@ -42,22 +40,33 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
           </thead>
           <tbody>
             {assignations.length > 0 ? (
-              assignations.map((participant, index) => (
-                <tr key={participant.AssignationID} className="text-center">
-                  <td className="px-4 py-2 border-b">{index + 1}</td>
-                  <td className="px-4 py-2 border-b">
-                    {participant.PersonLastName} {participant.PersonName}
-                  </td>
-                  <td className="px-4 py-2 border-b">{participant.PersonState}</td>
-                  <td className="px-4 py-2 border-b flex items-center justify-center">
-                    <ToggleSwitch
-                      isChecked={attendances[participant.AssignationID] || false}
-                      onToggle={() => toggleAttendance(participant.AssignationID)}
-                    />
-                    <span className="ml-2">{attendances[participant.AssignationID] ? 'Sí' : 'No'}</span>
-                  </td>
-                </tr>
-              ))
+              assignations
+                .sort((a, b) => {
+                  const nameA = `${a.PersonLastName} ${a.PersonName}`.toUpperCase();
+                  const nameB = `${b.PersonLastName} ${b.PersonName}`.toUpperCase();
+                  if (nameA < nameB) {
+                    return -1;
+                  }
+                  if (nameA > nameB) {
+                    return 1;
+                  }
+                  return 0;
+                })
+                .map((participant, index) => (
+                  <tr key={participant.AssignationID} className="text-center">
+                    <td className="px-4 py-2 border-b">{index + 1}</td>
+                    <td className="px-4 py-2 border-b">
+                      {participant.PersonLastName} {participant.PersonName}
+                    </td>
+                    <td className="px-4 py-2 border-b">{participant.PersonState}</td>
+                    <td className="px-4 py-2 border-b flex items-center justify-center">
+                      <ToggleSwitch
+                        isChecked={attendances[participant.AssignationID] || false}
+                        onToggle={() => toggleAttendance(participant.AssignationID)}
+                      />
+                    </td>
+                  </tr>
+                ))
             ) : (
               <tr>
                 <td colSpan={4} className="px-4 py-2">
