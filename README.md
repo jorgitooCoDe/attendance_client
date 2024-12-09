@@ -33,22 +33,23 @@ git clone https://github.com/luisBazanDev/attendance-backend.git
 # Inicia el frontend
 cd tu-repositorio
 npm start
+```
 
-Contribución
+## Contribución
 ¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
 
-Haz un fork del proyecto.
-Crea una nueva rama (git checkout -b feature/nueva-caracteristica).
-Realiza tus cambios y haz commit (git commit -am 'Agrega nueva característica').
-Sube tus cambios (git push origin feature/nueva-caracteristica).
-Abre un Pull Request.
+## Haz un fork del proyecto.
+- Crea una nueva rama (git checkout -b feature/nueva-caracteristica).
+- Realiza tus cambios y haz commit (git commit -am 'Agrega nueva característica').
+- Sube tus cambios (git push origin feature/nueva-caracteristica).
+- Abre un Pull Request.
 
-Licencia
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más información.
+## Licencia
+Este proyecto está licenciado bajo la Licencia MIT.
 
-Contacto
+## Contacto
 Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto:
 
-Nombre: Jorge Contreras
-Email: jorgito.soh@gmail.com
-GitHub: jorgitooCoDe
+- Nombre: Jorge Contreras
+- Email: jorgito.soh@gmail.com
+- GitHub: jorgitooCoDe
