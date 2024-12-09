@@ -46,10 +46,7 @@ export type CreateSessionResponse = {
 
 
 // GET /api/v0/auth/getGroupStatistics
-export type GetGroupStatisticsResponse = {
-  message: string;
-  content: StatisticsResponseEntity;
-};
+export type GetGroupStatisticsResponse = StatisticsResponseEntity;
 
 // GET /api/v0/auth/showAllGroups
 export type ShowAllGroupsResponse = {
