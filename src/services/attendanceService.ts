@@ -1,14 +1,7 @@
 import apiClient from '../client/apiClient';
+import { TakeAttendanceResponse, TakeAttendanceRequest } from '../types/apiResponseEntities';
 
-interface TakeAttendanceRequest {
-  personId: string;
-  groupId: number;
-  sessionNumber: number;
-}
 
-interface TakeAttendanceResponse {
-  message: string;
-}
 
 export const takeAttendance = async (data: TakeAttendanceRequest): Promise<TakeAttendanceResponse> => {
   try {

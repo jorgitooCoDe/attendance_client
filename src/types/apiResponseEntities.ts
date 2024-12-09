@@ -52,6 +52,17 @@ export type AttendanceResponseEntity = {
   message: string;
 };
 
+export type TakeAttendanceRequest = {
+  personId: string;
+  groupId: number;
+  session_number: number;
+};
+
+
+export type TakeAttendanceResponse = {
+  message: string;
+};
+
 export type StatisticsResponseEntity = {
   TotalPersons: number;
   TotalSessions: number;

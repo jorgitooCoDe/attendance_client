@@ -50,7 +50,7 @@ const ManagerDashboard = () => {
           return takeAttendance({
             personId: participant.PersonCode,
             groupId: groupId,
-            sessionNumber: currentSession.sessionNumber,
+            session_number: currentSession.sessionNumber,
           });
         }
         return Promise.resolve();

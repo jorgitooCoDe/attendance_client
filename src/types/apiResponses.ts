@@ -44,11 +44,6 @@ export type CreateSessionResponse = {
   content: SessionResponseEntity;
 };
 
-// POST /api/v0/auth/takeAttendance
-export type TakeAttendanceResponse = {
-  message: string;
-  content: AttendanceResponseEntity;
-};
 
 // GET /api/v0/auth/getGroupStatistics
 export type GetGroupStatisticsResponse = {
