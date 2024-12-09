@@ -34,9 +34,8 @@ export type AddPersonToGroupResponse = {
 };
 
 // POST /api/v0/auth/addManager
-export type AddManagerResponse = {
-  message: string;
-  content: ManagerResponseEntity;
+export type AddManagerToGroupResponse = {
+  manager: ManagerResponseEntity;
 };
 
 // POST /api/v0/auth/createSession
@@ -57,6 +56,8 @@ export type ShowAllGroupsResponse = {
   message: string;
   content: GroupStatisticsResponseEntity[];
 };
+
+export type GetAllGroupsResponse = GroupResponseEntity[];
 
 // GET /api/v0/auth/searchGroupByName
 export type SearchGroupByNameResponse = {

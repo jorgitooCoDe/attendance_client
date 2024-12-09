@@ -86,7 +86,17 @@ export type AddPersonToGroupRequest = {
   groupId: number;
 };
 
-
+export type AddManagerToGroupRequest = {
+  username: string;
+  password: string;
+  htop_seed: string;
+  code_person: string;
+  name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  group_id: number;
+};
 
 export type ErrorResponse = {
   message: string;
