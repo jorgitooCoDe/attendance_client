@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import CreateGroupModal from '../molecules/groupModal';
 import AddPersonToGroupModal from '../molecules/addPersonModal';
+import ShowAllGroupsModal from '../molecules/showGroupsModal';
 
 const options = [
   { text: 'Crear Grupo', modal: 'createGroup' },
@@ -46,7 +47,7 @@ const AdminDashboard: React.FC = () => {
       case 'getGroupStatistics':
         return <div>Get Group Statistics Content</div>;
       case 'getAllGroups':
-        return <div>Get All Groups Content</div>;
+        return <ShowAllGroupsModal isOpen={true} onClose={handleClose} />
       case 'getSearchGroupByName':
         return <div>Get Search Group by Name Content</div>;
       case 'getSessionsToday':
