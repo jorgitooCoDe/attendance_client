@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# Proyecto de Gestión de Grupos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+Este proyecto es una aplicación de gestión de grupos que permite a los administradores y gerentes crear grupos, agregar personas a los grupos, gestionar sesiones y tomar asistencia. La aplicación está construida utilizando React y TypeScript en el frontend, y una API REST en el backend.
 
-In the project directory, you can run:
+## Características
 
-### `npm start`
+- Crear grupos
+- Agregar personas a los grupos
+- Crear sesiones
+- Ver estadísticas de los grupos
+- Buscar grupos por nombre
+- Ver todas las sesiones de hoy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalación
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Sigue estos pasos para instalar y configurar el proyecto en tu máquina local:
 
-### `npm test`
+```bash
+# Clona el repositorio del frontend
+git clone https://github.com/jorgitooCoDe/attendance_client.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Navega al directorio del frontend
+cd tu-repositorio
 
-### `npm run build`
+# Instala las dependencias del frontend
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Clona el repositorio del backend
+git clone https://github.com/luisBazanDev/attendance-backend.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Inicia el frontend
+cd tu-repositorio
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Contribución
+¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
 
-### `npm run eject`
+Haz un fork del proyecto.
+Crea una nueva rama (git checkout -b feature/nueva-caracteristica).
+Realiza tus cambios y haz commit (git commit -am 'Agrega nueva característica').
+Sube tus cambios (git push origin feature/nueva-caracteristica).
+Abre un Pull Request.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Licencia
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más información.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contacto
+Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Nombre: Jorge Contreras
+Email: jorgito.soh@gmail.com
+GitHub: jorgitooCoDe
