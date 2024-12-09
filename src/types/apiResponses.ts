@@ -30,8 +30,7 @@ export type CreateGroupResponse = {
 };
 // POST /api/v0/auth/addPersonToGroup
 export type AddPersonToGroupResponse = {
-  message: string;
-  content: PersonResponseEntity;
+  person: PersonResponseEntity;
 };
 
 // POST /api/v0/auth/addManager

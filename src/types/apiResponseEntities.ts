@@ -77,3 +77,17 @@ export type GroupStatisticsResponseEntity = {
   PersonPhone: string;
   PersonState: string;
 };
+
+export type AddPersonToGroupRequest = {
+  personId: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  groupId: number;
+};
+
+
+
+export type ErrorResponse = {
+  message: string;
+};
