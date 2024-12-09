@@ -5,6 +5,7 @@ import { TertiaryButton, LargeSquareButton } from '../atoms/button';
 import { useNavigate } from 'react-router-dom';
 import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import CreateGroupModal from '../molecules/groupModal';
+import AddPersonToGroupModal from '../molecules/addPersonModal';
 
 const options = [
   { text: 'Crear Grupo', modal: 'createGroup' },
@@ -37,7 +38,7 @@ const AdminDashboard: React.FC = () => {
       case 'createGroup':
         return <CreateGroupModal isOpen={true} onClose={handleClose} />;
       case 'addPersonToGroup':
-        return <div>Add Person to Group Content</div>;
+        return <AddPersonToGroupModal isOpen={true} onClose={handleClose} />;
       case 'addManagerToGroup':
         return <div>Add Manager to Group Content</div>;
       case 'createSession':
