@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../atoms/input';
-import Button from '../../atoms/button';
+import { PrimaryButton } from '../../atoms/button';
 import { useAuth } from '../../../hooks/useAuth';
 
 const LoginForm: React.FC = () => {
@@ -48,7 +48,7 @@ const LoginForm: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <div className="flex justify-center w-full">
-        <Button text="Sign In" onClick={handleClick} variant='primary' />
+        <PrimaryButton text="Sign In" onClick={handleClick} />
       </div>
       <a href="#" className="flex mt-4 text-gray-500 justify-end hover:underline">Forgot password?</a>
     </form>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import { useAuth } from '../../hooks/useAuth';
-import Button from '../atoms/button';
+import { SecondaryButton, TertiaryButton } from '../atoms/button';
 import AttendanceModal from '../molecules/attendanceModal';
 import { useAssignationByGroupID } from '../../hooks/useAssignation';
 import { takeAttendance } from '../../services/attendanceService';
@@ -68,10 +68,9 @@ const ManagerDashboard = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <Button
+      <TertiaryButton
         text="Cerrar sesión"
         onClick={onLogout}
-        variant="tertiary"
         className="absolute top-4 right-4 px-3 py-1"
       />
       <div className="relative bg-white p-8 rounded-lg w-full max-w-lg border shadow-custom-red">
@@ -107,10 +106,9 @@ const ManagerDashboard = () => {
             </table>
 
             <div className="text-center">
-              <Button
+              <SecondaryButton
                 text="Tomar asistencia"
                 onClick={() => setIsModalOpen(true)}
-                variant="secondary"
               />
             </div>
 

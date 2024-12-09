@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from '../modal';
 import ToggleSwitch from '../../atoms/toggleSwitch';
-import Button from '../../atoms/button';
+import { SaveButton } from '../../atoms/button';
+
 import { GroupStatisticsResponseEntity } from '../../../types';
 
 type AttendanceModalProps = {
@@ -81,10 +82,9 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
       )}
 
       <div className="flex justify-end mt-4">
-        <Button
+        <SaveButton
           text="Guardar"
           onClick={onSave}
-          variant="save"
           className="mr-6"
         />
       </div>
