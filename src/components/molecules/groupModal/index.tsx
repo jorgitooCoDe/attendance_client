@@ -11,7 +11,6 @@ type CreateGroupModalProps = {
 
 const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState<GroupResponseEntity>({
-    id: 0,
     name: '',
     description: '',
     amount_persons: 0,
@@ -76,7 +75,7 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose }) 
           className="p-2 border border-gray-300 rounded"
           variant='secondary'
         />
-        <button type="submit" disabled={loading} className="bg-blue-500 text-white p-2 rounded w-full">
+        <button type="submit" disabled={loading} className="bg-mto_gray text-white p-2 rounded w-full hover:bg-mto_red_light transition-colors">
           {loading ? 'Creating...' : 'Create Group'}
         </button>
       </form>

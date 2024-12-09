@@ -13,7 +13,6 @@ export type UserApiResponse = {
 };
 
 export type GroupResponseEntity = {
-  id: number;
   name: string;
   description: string;
   amount_persons: number;
