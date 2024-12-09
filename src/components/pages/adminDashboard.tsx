@@ -7,13 +7,13 @@ import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 import CreateGroupModal from '../molecules/groupModal';
 import AddPersonToGroupModal from '../molecules/addPersonModal';
 import ShowAllGroupsModal from '../molecules/showGroupsModal';
+import GroupStatisticsModal from '../molecules/statsModal';
 
 const options = [
   { text: 'Crear Grupo', modal: 'createGroup' },
   { text: 'Agregar persona a Grupo', modal: 'addPersonToGroup' },
   { text: 'Agregar Manager a Grupo', modal: 'addManagerToGroup' },
   { text: 'Crear Sesión', modal: 'createSession' },
-  { text: 'Estadísticas de Grupos', modal: 'getGroupStatistics' },
   { text: 'Ver todos los Grupos', modal: 'getAllGroups' },
   { text: 'Buscar grupo por nombre', modal: 'getSearchGroupByName' },
   { text: 'Sesiones de hoy', modal: 'getSessionsToday' },
@@ -30,9 +30,17 @@ const AdminDashboard: React.FC = () => {
   };
 
   const [open, setOpen] = useState<string | null>(null);
+  const [selectedGroupId, setSelectedGroupId] = useState<number | null>(null);
+  const [existingManagers, setExistingManagers] = useState<{ id: number; name: string }[]>([]);
+
 
   const handleOpen = (modal: string) => () => setOpen(modal);
   const handleClose = () => setOpen(null);
+
+  const handleGroupSelect = (groupId: number) => {
+    setSelectedGroupId(groupId);
+    setOpen('groupStatistics');
+  };
 
   const renderModalContent = () => {
     switch (open) {
@@ -41,13 +49,15 @@ const AdminDashboard: React.FC = () => {
       case 'addPersonToGroup':
         return <AddPersonToGroupModal isOpen={true} onClose={handleClose} />;
       case 'addManagerToGroup':
-        return <div>Add Manager to Group Content</div>;
+        return <div>sapo eres</div>
       case 'createSession':
         return <div>Create Session Content</div>;
-      case 'getGroupStatistics':
-        return <div>Get Group Statistics Content</div>;
+      case 'groupStatistics':
+        return selectedGroupId !== null ? (
+          <GroupStatisticsModal isOpen={true} onClose={handleClose} groupId={selectedGroupId} />
+        ) : null;
       case 'getAllGroups':
-        return <ShowAllGroupsModal isOpen={true} onClose={handleClose} />
+        return <ShowAllGroupsModal isOpen={true} onClose={handleClose} onSelectGroup={handleGroupSelect} />;
       case 'getSearchGroupByName':
         return <div>Get Search Group by Name Content</div>;
       case 'getSessionsToday':

@@ -5,9 +5,10 @@ import useGetAllGroups from '../../../hooks/useGetAllGroups';
 type ShowAllGroupsModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  onSelectGroup: (groupId: number) => void;
 };
 
-const ShowAllGroupsModal: React.FC<ShowAllGroupsModalProps> = ({ isOpen, onClose }) => {
+const ShowAllGroupsModal: React.FC<ShowAllGroupsModalProps> = ({ isOpen, onClose, onSelectGroup }) => {
   const { groups, loading, error } = useGetAllGroups();
 
   return (
@@ -17,7 +18,7 @@ const ShowAllGroupsModal: React.FC<ShowAllGroupsModalProps> = ({ isOpen, onClose
       {groups && (
         <div className="flex flex-col space-y-4">
           {groups.map((group, index) => (
-            <div key={index} className="p-4 border border-gray-300 rounded">
+            <div key={index} className="p-4 border border-gray-300 rounded cursor-pointer" onClick={() => onSelectGroup(index)}>
               <h3 className="text-lg font-bold">{group.name}</h3>
               <p>{group.description}</p>
               <p>Cantidad de personas: {group.amount_persons}</p>
