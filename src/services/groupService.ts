@@ -1,5 +1,5 @@
 import apiClient from '../client/apiClient';
-import { CreateGroupResponse, GroupResponseEntity, GetAllGroupsResponse } from '../types';
+import { CreateGroupResponse, GroupResponseEntity, GetAllGroupsResponse, GetGroupStatisticsResponse } from '../types';
 
 export const createGroup = async (groupData: GroupResponseEntity): Promise<CreateGroupResponse> => {
   try {
@@ -12,5 +12,10 @@ export const createGroup = async (groupData: GroupResponseEntity): Promise<Creat
 
 export const getAllGroups = async (): Promise<GetAllGroupsResponse> => {
   const response = await apiClient.get<GetAllGroupsResponse>('/auth/showAllGroups');
+  return response.data;
+};
+
+export const getGroupStatistics = async (groupId: number): Promise<GetGroupStatisticsResponse> => {
+  const response = await apiClient.get<GetGroupStatisticsResponse>(`/auth/getGroupStatistics?groupId=${groupId}`);
   return response.data;
 };
