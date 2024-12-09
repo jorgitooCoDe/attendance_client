@@ -3,21 +3,23 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { TertiaryButton, LargeSquareButton } from '../atoms/button';
 import { useNavigate } from 'react-router-dom';
+import { useManagerDashboard } from '../../hooks/useManagerDashboard';
 
 const options = [
-  { text: 'Create Group', modal: 'createGroup' },
-  { text: 'Add Person to Group', modal: 'addPersonToGroup' },
-  { text: 'Add Manager to Group', modal: 'addManagerToGroup' },
-  { text: 'Create Session', modal: 'createSession' },
-  { text: 'Get Group Statistics', modal: 'getGroupStatistics' },
-  { text: 'Get All Groups', modal: 'getAllGroups' },
-  { text: 'Get Search Group by Name', modal: 'getSearchGroupByName' },
-  { text: 'Get Sessions Today', modal: 'getSessionsToday' },
+  { text: 'Crear Grupo', modal: 'createGroup' },
+  { text: 'Agregar persona a Grupo', modal: 'addPersonToGroup' },
+  { text: 'Agregar Manager a Grupo', modal: 'addManagerToGroup' },
+  { text: 'Crear Sesión', modal: 'createSession' },
+  { text: 'Estadísticas de Grupos', modal: 'getGroupStatistics' },
+  { text: 'Ver todos los Grupos', modal: 'getAllGroups' },
+  { text: 'Buscar grupo por nombre', modal: 'getSearchGroupByName' },
+  { text: 'Sesiones de hoy', modal: 'getSessionsToday' },
 ];
 
 const AdminDashboard: React.FC = () => {
   const { handleLogout } = useAuth();
   const navigate = useNavigate();
+  const { user } = useManagerDashboard();
 
   const onLogout = () => {
     handleLogout();
@@ -53,14 +55,18 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 shadow-custom-gray">
       <TertiaryButton
         text="Cerrar sesión"
         onClick={onLogout}
         className="absolute top-4 right-4 px-3 py-1"
       />
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-        <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+        {user && (
+          <h1 className="text-2xl font-bold mb-6 text-center text-mto_gray">
+            Bienvenido <span className='text-mto_red'>{user.name}</span>
+          </h1>
+        )}
         <div className="space-y-4">
           <div className="flex justify-center space-x-4">
             {options.slice(0, 4).map(option => (

@@ -76,7 +76,7 @@ const ManagerDashboard = () => {
       <div className="relative bg-white p-8 rounded-lg w-full max-w-lg border shadow-custom-red">
         {user && (
           <h1 className="text-2xl font-bold mb-6 text-center text-mto_gray">
-            Bienvenido manager {user.name}
+            Bienvenido <span className='text-mto_red'>{user.name}</span>
           </h1>
         )}
 

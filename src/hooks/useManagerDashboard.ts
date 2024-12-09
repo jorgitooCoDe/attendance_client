@@ -26,7 +26,6 @@ export const useManagerDashboard = () => {
         setSessionsData(sessionsResponse);
       } catch (err) {
         console.error('Error fetching data:', err);
-        setError('Failed to fetch data');
       }
     };
 
