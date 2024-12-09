@@ -5,7 +5,9 @@ import { useAuth } from '../../hooks/useAuth';
 import Button from '../atoms/button';
 import AttendanceModal from '../molecules/attendanceModal';
 import { useAssignationByGroupID } from '../../hooks/useAssignation';
+import { takeAttendance } from '../../services/attendanceService';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ManagerDashboard = () => {
   const { user, sessionsData, error } = useManagerDashboard();
@@ -34,6 +36,34 @@ const ManagerDashboard = () => {
       ...prev,
       [id]: !prev[id],
     }));
+  };
+
+  const handleSave = async () => {
+    if (!currentSession) {
+      toast.error('No hay sesión actual disponible');
+      return;
+    }
+
+    try {
+      const promises = assignations.map((participant) => {
+        if (attendances[participant.AssignationID]) {
+          return takeAttendance({
+            personId: participant.PersonCode,
+            groupId: groupId,
+            sessionNumber: currentSession.sessionNumber,
+          });
+        }
+        return Promise.resolve();
+      });
+
+      await Promise.all(promises);
+      console.log('Asistencia guardada:', attendances);
+      setIsModalOpen(false);
+      toast.success('Asistencia registrada correctamente');
+    } catch (error) {
+      console.error('Error al guardar la asistencia:', error);
+      toast.error('Error al guardar la asistencia');
+    }
   };
 
   return (
@@ -92,6 +122,7 @@ const ManagerDashboard = () => {
               assignations={assignations}
               attendances={attendances}
               toggleAttendance={toggleAttendance}
+              onSave={handleSave}
             />
           </div>
         ) : (

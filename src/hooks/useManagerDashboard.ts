@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { getValidSession, getSessionsToday, getAssignationsByGroupID } from '../services/managerService';
+import { getValidSession, getSessionsToday } from '../services/managerService';
 import { UserResponseEntity, SessionResponseEntity, PersonResponseEntity } from '../types/apiResponseEntities';
 
 export const useManagerDashboard = () => {
   const [user, setUser] = useState<UserResponseEntity | null>(null);
   const [sessionsData, setSessionsData] = useState<SessionResponseEntity[]>([]);
-  const [persons, setPersons] = useState<PersonResponseEntity[]>([]);
+  const [persons] = useState<PersonResponseEntity[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

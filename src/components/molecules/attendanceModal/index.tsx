@@ -12,6 +12,7 @@ type AttendanceModalProps = {
   assignations: GroupStatisticsResponseEntity[];
   attendances: { [key: number]: boolean };
   toggleAttendance: (id: number) => void;
+  onSave: () => void;
 };
 
 const AttendanceModal: React.FC<AttendanceModalProps> = ({
@@ -22,6 +23,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
   assignations,
   attendances,
   toggleAttendance,
+  onSave,
 }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Asistencia de participantes">
@@ -78,12 +80,12 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
         </table>
       )}
 
-      <div className="text-center mt-4">
+      <div className="flex justify-end mt-4">
         <Button
-          text="Cerrar"
-          onClick={onClose}
-          variant="tertiary"
-          className="px-4 py-2"
+          text="Guardar"
+          onClick={onSave}
+          variant="save"
+          className="mr-6"
         />
       </div>
     </Modal>
