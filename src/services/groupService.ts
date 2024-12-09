@@ -1,5 +1,5 @@
 import apiClient from '../client/apiClient';
-import { CreateGroupResponse, GroupResponseEntity } from '../types';
+import { CreateGroupResponse, GroupResponseEntity, GetAllGroupsResponse } from '../types';
 
 export const createGroup = async (groupData: GroupResponseEntity): Promise<CreateGroupResponse> => {
   try {
@@ -8,4 +8,9 @@ export const createGroup = async (groupData: GroupResponseEntity): Promise<Creat
   } catch (error) {
     throw error;
   }
+};
+
+export const getAllGroups = async (): Promise<GetAllGroupsResponse> => {
+  const response = await apiClient.get<GetAllGroupsResponse>('/auth/showAllGroups');
+  return response.data;
 };

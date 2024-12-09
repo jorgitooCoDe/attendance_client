@@ -4,8 +4,8 @@ import {
   SearchSessionsByGroupIDResponse,
   ShowAssignationByGroupIDResponse,
   ShowAllGroupsResponse,
-  SessionsTodayResponse,
-} from '../types/apiResponses';
+  SessionsTodayResponse, AddManagerToGroupRequest, AddManagerToGroupResponse, ErrorResponse
+} from '../types';
 
 export const getValidSession = async () => {
   const response = await apiClient.get<ValidSessionResponse>('/auth/valid');
@@ -29,5 +29,10 @@ export const getGroupsByUserCode = async (userCode: string) => {
 
 export const getSessionsToday = async () => {
   const response = await apiClient.get<SessionsTodayResponse>('/auth/getSessionsToday');
+  return response.data;
+};
+
+export const addManagerToGroup = async (managerData: AddManagerToGroupRequest): Promise<AddManagerToGroupResponse> => {
+  const response = await apiClient.post<AddManagerToGroupResponse>('/auth/addManager', managerData);
   return response.data;
 };
