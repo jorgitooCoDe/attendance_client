@@ -34,5 +34,5 @@ export const SaveButton: React.FC<ButtonProps> = (props) => (
 );
 
 export const LargeSquareButton: React.FC<ButtonProps> = (props) => (
-  <BaseButton {...props} variantClasses="w-32 h-32 bg-transparent hover:bg-mto_red_light text-black flex items-center justify-center " />
+  <BaseButton {...props} variantClasses="w-32 h-32 hover:shadow-custom-red text-black flex items-center justify-center transition-shadow duration-700" />
 );

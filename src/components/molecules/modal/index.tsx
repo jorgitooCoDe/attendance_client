@@ -5,14 +5,30 @@ type ModalProps = {
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  size?: 'small' | 'medium' | 'large';
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, size = 'medium' }) => {
   if (!isOpen) return null;
+
+  let sizeClasses;
+  switch (size) {
+    case 'small':
+      sizeClasses = 'max-w-sm';
+      break;
+    case 'medium':
+      sizeClasses = 'max-w-md';
+      break;
+    case 'large':
+      sizeClasses = 'max-w-3xl';
+      break;
+    default:
+      sizeClasses = 'max-w-md';
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg w-full max-w-3xl p-6 relative">
+      <div className={`bg-white rounded-lg w-full ${sizeClasses} p-6 relative`}>
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none"

@@ -22,10 +22,12 @@ export type ValidSessionResponse = {
 
 // POST /api/v0/auth/createGroup
 export type CreateGroupResponse = {
-  message: string;
-  content: GroupResponseEntity;
+  amount_sessions: number;
+  name: string;
+  amount_persons: number;
+  description: string;
+  Id: number;
 };
-
 // POST /api/v0/auth/addPersonToGroup
 export type AddPersonToGroupResponse = {
   message: string;

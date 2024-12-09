@@ -27,7 +27,7 @@ const AttendanceModal: React.FC<AttendanceModalProps> = ({
   onSave,
 }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Asistencia de participantes">
+    <Modal isOpen={isOpen} onClose={onClose} title="Asistencia de participantes" size='large'>
       {loading && <div className="text-center">Cargando participantes...</div>}
       {error && <div className="text-red-500 text-center">{error}</div>}
 

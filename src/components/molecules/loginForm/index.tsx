@@ -39,6 +39,7 @@ const LoginForm: React.FC = () => {
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        variant='primary'
       />
       <p className='text-xs text-mto_gray font-bold mb-3'>PASSWORD</p>
       <Input
@@ -46,6 +47,7 @@ const LoginForm: React.FC = () => {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        variant='primary'
       />
       <div className="flex justify-center w-full">
         <PrimaryButton text="Sign In" onClick={handleClick} />

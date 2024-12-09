@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { TertiaryButton, LargeSquareButton } from '../atoms/button';
 import { useNavigate } from 'react-router-dom';
 import { useManagerDashboard } from '../../hooks/useManagerDashboard';
+import CreateGroupModal from '../molecules/groupModal';
 
 const options = [
   { text: 'Crear Grupo', modal: 'createGroup' },
@@ -34,7 +35,7 @@ const AdminDashboard: React.FC = () => {
   const renderModalContent = () => {
     switch (open) {
       case 'createGroup':
-        return <div>Create Group Content</div>;
+        return <CreateGroupModal isOpen={true} onClose={handleClose} />;
       case 'addPersonToGroup':
         return <div>Add Person to Group Content</div>;
       case 'addManagerToGroup':
@@ -55,13 +56,13 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 shadow-custom-gray">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <TertiaryButton
         text="Cerrar sesión"
         onClick={onLogout}
         className="absolute top-4 right-4 px-3 py-1"
       />
-      <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+      <div className="bg-white p-8 rounded-lg text-center shadow-custom-gray">
         {user && (
           <h1 className="text-2xl font-bold mb-6 text-center text-mto_gray">
             Bienvenido <span className='text-mto_red'>{user.name}</span>

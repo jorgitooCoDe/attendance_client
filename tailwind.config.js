@@ -21,6 +21,7 @@ module.exports = {
       boxShadow: {
         'custom-gray': '0px 10px 15px -3px rgba(16, 27, 55, 0.5), 0 8px 8px -2px rgba(16, 27, 55, 0.25)',
         'custom-red': '0 10px 15px -3px rgba(228, 20, 118, 0.5), 0 4px 6px -2px rgba(228, 20, 118, 0.25)',
+        'custom-hover': '0 10px 15px -3px rgba(16, 27, 55, 0.5), 0 4px 6px -2px rgba(228, 20, 118, 0.4), 0 2px 4px -1px rgba(2, 200, 237, 0.3)',
       },
     },
   },
